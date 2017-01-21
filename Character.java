@@ -18,9 +18,6 @@ class Character extends GameObject{
         setDef(def);
     }
 
-    public void setName(String name) {
-        this.name = new String(name);
-    }
     public void setHp(int hp) {
         this.hp = hp;
     }
