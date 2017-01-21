@@ -2,15 +2,25 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class GameDev{
-    public static void fight(Player player, Enemy enemy)
-    throws InterruptedException{  // TODO: Consider def 
+	
+	//<--------------------- ATTACKING METHODS ------------------------->
+	//When you're attacking the enemy
+    public static void fightPlayerAttacks(Player player, Enemy enemy)throws InterruptedException{  // TODO: Consider def 
         player.setHp(player.getHp()-enemy.getAtk());
-        enemy.setHp(enemy.getHp()-player.getAtk());
-        System.out.printf("Enemy takes %d damage\n", player.getAtk());
         Thread.sleep(500);
-        System.out.printf("You take %d damage\n", enemy.getAtk());
+        System.out.printf("\t\tEnemy takes %d damage\n", player.getAtk());
+        
     }
 
+    //When enemy is attacking you
+    public static void fightEnemyAttacks(Player player, Enemy enemy)throws InterruptedException{
+    	enemy.setHp(enemy.getHp()-player.getAtk());
+    	Thread.sleep(500);
+    	System.out.printf("\t\tYou take %d damage\n", enemy.getAtk());
+    }
+    //<--------------------- END ATTACKING METHODS -------------------->
+
+    //<------------------------- MAIN CLASS --------------------------->
 	public static void main(String[] args) throws InterruptedException{
 
 		Scanner sc = new Scanner(System.in);
@@ -39,13 +49,7 @@ public class GameDev{
 			System.out.print("Input:");
 			choiceOfClass = sc.nextInt();
 		}while(choiceOfClass > 4 || choiceOfClass < 1);
-        // Create player TODO: set class based on user choice
-        Player player = new Player(characterName, 300, 50, 50, 20, "warrior");
-        player.setWeapon(new Weapon());
-        player.getWeapon().setType("sword");    // TODO: Set type based on class
 
-        // TODO: Fix formatting
-        pDel("You received a " + player.getWeapon().toString(), TimeUnit.MILLISECONDS);
 
 		//Story of class
 		Thread.sleep(1020);
@@ -54,21 +58,56 @@ public class GameDev{
 			pDel("\t\tThe sharpest steel needs a sharper mind\n", TimeUnit.MILLISECONDS);
 			Thread.sleep(700);
 			pDel("\t\tGo forth Warrior! Avenge your tribe!\n", TimeUnit.MILLISECONDS);
+	        // Create player TODO: set class based on user choice
+	        Player player = new Player(characterName, 300, 50, 50, 20, "warrior");
+	        player.setWeapon(new Weapon());
+	        player.getWeapon().setType("sword");    // TODO: Set type based on class
+
+	        // TODO: Fix formatting
+	        pDel("\t\tYou received a " + player.getWeapon().toString(), TimeUnit.MILLISECONDS);
+	        System.out.print("\n");
 		}
 		else if(choiceOfClass == 2){
 			pDel("\t\tHmmm.... Interesting choice of class\n", TimeUnit.MILLISECONDS);
 			Thread.sleep(700);
 			pDel("\t\tSeek knowledge through adventure, young Mage...\n", TimeUnit.MILLISECONDS);
+			// Create player TODO: set class based on user choice
+	        Player player = new Player(characterName, 300, 50, 50, 20, "mage");
+	        player.setWeapon(new Weapon());
+	        player.getWeapon().setType("staff");    // TODO: Set type based on class
+
+	        // TODO: Fix formatting
+	        pDel("\t\tYou received a " + player.getWeapon().toString(), TimeUnit.MILLISECONDS);
+	        System.out.print("\n");
+
 		}
 		else if(choiceOfClass == 3){
 			pDel("\t\tWhat you lack in power...\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tYou make it up with speed...\n", TimeUnit.MILLISECONDS);
 			Thread.sleep(700);
 			pDel("\t\tStrive and strike in darkness, Rogue!\n", TimeUnit.MILLISECONDS);
+
+			// Create player TODO: set class based on user choice
+	        Player player = new Player(characterName, 300, 50, 50, 20, "rogue");
+	        player.setWeapon(new Weapon());
+	        player.getWeapon().setType("dual-daggers");    // TODO: Set type based on class
+
+	        // TODO: Fix formatting
+	        pDel("\t\tYou received " + player.getWeapon().toString(), TimeUnit.MILLISECONDS);
+	        System.out.print("\n");
 		}
 		else if(choiceOfClass == 4){
 			pDel("\t\tYou've got a rocket in your pocket, young one\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tDestroy everything in your path, Gunslinger!\n", TimeUnit.MILLISECONDS);
+
+			// Create player TODO: set class based on user choice
+	        Player player = new Player(characterName, 300, 50, 50, 20, "gunslinger");
+	        player.setWeapon(new Weapon());
+	        player.getWeapon().setType("dual-pistols");    // TODO: Set type based on class
+
+	        // TODO: Fix formatting
+	        pDel("\t\tYou received " + player.getWeapon().toString(), TimeUnit.MILLISECONDS);
+	        System.out.print("\n");
 			
 		}
 		pDel("\t\tGet ready, adventurer!", TimeUnit.MILLISECONDS);
@@ -129,14 +168,13 @@ public class GameDev{
 			pDel("\t\tThe ground starts shaking immensely\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tA large monster materialized from the muddy plains\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tLucifer: Stay on your toes, fool! This is gonna be your first battle!\n", TimeUnit.MILLISECONDS);
+
+			//Enemy creation
             Enemy slime = new Enemy("Slime", 200, 10, 20, 0, "monster");
 			//Psuedo load
 			psuedoLoad(3);
 
-            while(slime.getHp() > 0) {
-                fight(player, slime);
-                Thread.sleep(1000);
-            }
+           
 
 		}
 
