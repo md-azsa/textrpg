@@ -91,7 +91,7 @@ public class GameDev{
 		for(int i = 0; i < 55; i++){
 			Thread.sleep(100 - psuedoLoading);
 			System.out.print("#");
-			psuedoLoading++;
+			psuedoLoading += 1;
 		}
 		System.out.println("|\n");
 
@@ -101,9 +101,9 @@ public class GameDev{
 		Thread.sleep(700);
 		pDel("\t\t....\n", TimeUnit.MILLISECONDS);
 		Thread.sleep(500);
-		pDel("\t\tUrgh... Where am I?\n", TimeUnit.MILLISECONDS);
+		pDel("\t\t\"Urgh... Where am I?\"\n", TimeUnit.MILLISECONDS);
 		Thread.sleep(400);
-		pDel("\t\tThere are 4 paths to take...\n", TimeUnit.MILLISECONDS);
+		pDel("\t\tLucifer: There are 4 paths to take... Choose one, adventurer...\n", TimeUnit.MILLISECONDS);
 		//Choice to take
 		pDel("\t\t1. A straight path that heads NORTH\n", TimeUnit.MILLISECONDS);
 		pDel("\t\t2. A path bathed with smog that heads EAST\n", TimeUnit.MILLISECONDS);
@@ -116,6 +116,8 @@ public class GameDev{
 			choiceOfPath1 = sc.nextInt();
 		}while(choiceOfPath1 < 1 || choiceOfPath1 > 4);
 
+
+		//<--------- CHARACTER TAKES NORTH, FIRST CHOICE ------------->
 		if(choiceOfPath1 == 1){
 			pDel("\t\tYou took the straight path...\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tAlong the way you see a shiny object sitting on a rock\n", TimeUnit.MILLISECONDS);
@@ -127,11 +129,34 @@ public class GameDev{
 				choiceToTakeShinyObject = sc.nextInt();
 			}while(choiceToTakeShinyObject < 1 || choiceToTakeShinyObject > 2);
 
+			//Choice on whether he took the shiny object
+			//The shiny object is ?
+			if(choiceToTakeShinyObject == 1){ //Took the shiny object
+				pDel("\t\t-You took the shiny object-\n", TimeUnit.MILLISECONDS);
+				pDel("\t\t\"I wonder what this is for...\"\n", TimeUnit.MILLISECONDS);
 
-
+			}else{
+				pDel("\t\t-You walk away from the shiny object-\n", TimeUnit.MILLISECONDS);
+			}
 		}
 
+		//<--------------- CHARACTER TAKES WEST, FOURTH CHOICE ------------------>
+		//For shannon's combat test
+		if(choiceOfPath1 == 4){
+			pDel("\t\tThe ground starts shaking immensely\n", TimeUnit.MILLISECONDS);
+			pDel("\t\tA large monster materialized from the muddy plains\n", TimeUnit.MILLISECONDS);
+			pDel("\t\tLucifer: Stay on your toes, fool! This is gonna be your first battle!\n", TimeUnit.MILLISECONDS);
+			//Psuedo load
+			System.out.print("\t\t|");
+				psuedoLoading = 1;
+				for(int i = 0; i < 55; i++){
+					Thread.sleep(100 - psuedoLoading);
+					System.out.print("#");
+					psuedoLoading += 1;
+				}
+			System.out.println("|\n");
 
+		}
 
 
 	}
