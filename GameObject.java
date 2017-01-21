@@ -1,11 +1,12 @@
 class GameObject{
 
     protected int index;
-    protected int name;
+    protected String name;
 
     public void GameObject()
     {
-
+        name = "";
+        index = -1;
     }
 
 
@@ -20,15 +21,13 @@ class GameObject{
 
     }
 
-    public setName(String name)
+    public void setName(String name)
     {
-        this.name = name;
+        this.name = new String(name);
 
     }
 
     
-
-
 
 
 
