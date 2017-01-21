@@ -6,6 +6,11 @@ class Equipment extends GameObject{
     protected int atk;
     protected int def;
 
+    public Equipment() {
+        setQuality("poor");
+        setAtk(3);
+        setDef(1);
+    }
     public Equipment(String quality, int atk, int def) {
         setQuality(quality);
         setAtk(atk);
