@@ -53,8 +53,11 @@ public class GameDev{
 		System.out.println("\t\t\t 2. Magician: Equipped with a staff");
 		System.out.println("\t\t\t 3. Rogue: Equipped with dual-daggers");
 		System.out.println("\t\t\t 4. Gunslinger: Equipped with a dual-pistols");
-		System.out.print("Input:");
-		int choiceOfClass = sc.nextInt();
+		int choiceOfClass = 0;
+		do{
+			System.out.print("Input:");
+			choiceOfClass = sc.nextInt();
+		}while(choiceOfClass > 4 || choiceOfClass < 1);
 		//Story of class
 		Thread.sleep(1020);
 
@@ -106,6 +109,28 @@ public class GameDev{
 		pDel("\t\t2. A path bathed with smog that heads EAST\n", TimeUnit.MILLISECONDS);
 		pDel("\t\t3. A path heading SOUTH that leads to a gate\n", TimeUnit.MILLISECONDS);
 		pDel("\t\t4. A path that heads WEST and a figure behind it\n", TimeUnit.MILLISECONDS);
+
+		int choiceOfPath1 = 0;	
+		do{
+			System.out.print("Input:");
+			choiceOfPath1 = sc.nextInt();
+		}while(choiceOfPath1 < 1 || choiceOfPath1 > 4);
+
+		if(choiceOfPath1 == 1){
+			pDel("\t\tYou took the straight path...\n", TimeUnit.MILLISECONDS);
+			pDel("\t\tAlong the way you see a shiny object sitting on a rock\n", TimeUnit.MILLISECONDS);
+			pDel("\t\t1. Take the shiny object\n", TimeUnit.MILLISECONDS);
+			pDel("\t\t2. Leave it alone\n", TimeUnit.MILLISECONDS);
+			int choiceToTakeShinyObject = 0;
+			do{
+				System.out.print("Input:");
+				choiceToTakeShinyObject = sc.nextInt();
+			}while(choiceToTakeShinyObject < 1 || choiceToTakeShinyObject > 2);
+
+
+
+		}
+
 
 
 
