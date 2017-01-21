@@ -2,14 +2,14 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class GameDev{
-    public static void fight(Player player, Enemy enemy) {
+    public static void fight(Player player, Enemy enemy) {  // TODO: Consider def 
         player.setHp(player.getHp()-enemy.getAtk());
         enemy.setHp(enemy.getHp()-player.getAtk());
         System.out.printf("You take %d damage\n", enemy.getAtk());
-        System.out.printf("%s takes %d damage\n", player.getAtk());
+        System.out.printf("Enemy takes %d damage\n", player.getAtk());
     }
 
-    public static Equipment generateEquipment(){
+/*    public static Equipment generateEquipment(){    // TODO: Randomize atk and def 
         Random rand = new Random();
         int randQuality = rand.nextInt(10) + 1;
         if(randQuality<=3)
@@ -23,7 +23,7 @@ public class GameDev{
         else
             return new Weapon("legendary", 100, 35, 100);
     }
-
+*/
 	public static void main(String[] args) throws InterruptedException{
 		//Creates array of weapons, scanner class
 		Weapon[] weapons = new Weapon[4];
