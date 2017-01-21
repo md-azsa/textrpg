@@ -2,12 +2,12 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class GameDev{
-
-	public static class Weapon{
-		int weaponType;
-		int weaponDamage;
-		int weaponDurability;
-	}
+    public static void fight(Player player, Enemy enemy) {
+        player.setHp(player.getHp()-enemy.getAtk());
+        enemy.setHp(enemy.getHp()-player.getAtk());
+        System.out.printf("You take %d damage\n", enemy.getAtk());
+        System.out.printf("%s takes %d damage\n", player.getAtk());
+    }
 
 	public static void main(String[] args) throws InterruptedException{
 		//Creates array of weapons, scanner class
@@ -23,21 +23,21 @@ public class GameDev{
 		String characterName = sc.nextLine();
 		
 		//Sword class
-		weapons[0].weaponType = 1;
-		weapons[0].weaponDamage = 65;
-		weapons[0].weaponDurability = 100;
+		weapons[0].setType("sword");
+		weapons[0].setAtk(65);
+		weapons[0].setDurability(100);
 		//Mage class
-		weapons[1].weaponType = 2;
-		weapons[1].weaponDamage = 40;
-		weapons[1].weaponDurability = 100;
+		weapons[1].setType("staff");
+		weapons[1].setAtk(40);
+		weapons[1].setDurability(100);
 		//Rogue class
-		weapons[2].weaponType = 3;
-		weapons[2].weaponDamage = 50;
-		weapons[2].weaponDurability = 100;
+		weapons[2].setType("dagger");
+		weapons[2].setAtk(50);
+		weapons[2].setDurability(100);
 		//Gunslinger class
-		weapons[3].weaponType = 4;
-		weapons[3].weaponDamage = 50;
-		weapons[3].weaponDurability = 100;
+		weapons[3].setType("gun");
+		weapons[3].setAtk(50);
+		weapons[3].setDurability(100);
 		pDel("\t\tNice to meet you ", TimeUnit.MILLISECONDS);
 		pDel(characterName, TimeUnit.MILLISECONDS);
 		pDel("!\n", TimeUnit.MILLISECONDS);
