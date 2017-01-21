@@ -5,17 +5,15 @@ public class GameDev{
 	
 	//<--------------------- ATTACKING METHODS ------------------------->
 	//When you're attacking the enemy
-    public static void fightPlayerAttacks(Player player, Enemy enemy)throws InterruptedException{  // TODO: Consider def 
+    public static void playerAttack(Player player, Enemy enemy){  // TODO: Consider def 
         player.setHp(player.getHp()-enemy.getAtk());
-        Thread.sleep(500);
         System.out.printf("\t\tEnemy takes %d damage\n", player.getAtk());
         
     }
 
     //When enemy is attacking you
-    public static void fightEnemyAttacks(Player player, Enemy enemy)throws InterruptedException{
+    public static void enemyAttack(Player player, Enemy enemy){
     	enemy.setHp(enemy.getHp()-player.getAtk());
-    	Thread.sleep(500);
     	System.out.printf("\t\tYou take %d damage\n", enemy.getAtk());
     }
     //<--------------------- END ATTACKING METHODS -------------------->
@@ -155,8 +153,18 @@ public class GameDev{
 
 			//Enemy creation
             Enemy slime = new Enemy("Slime", 200, 10, 20, 0, "monster");
-			//Psuedo load
+
 			psuedoLoad(3);
+
+            // Combat loop
+            while(player.getHp() > 0) {
+                if(slime.getHp() <= 0) {
+                    pDel("You defeated " + slime.getName() + "!", TimeUnit.MILLISECONDS);
+                    System.out.println();
+                    break;
+                }
+                combatMenu(player, slime);
+            }
 		}
 	}
 
@@ -192,11 +200,21 @@ public class GameDev{
 	}
 
 	//Displays combat menu
-	public static void combatMenu(){
+	public static void combatMenu(Player player, Enemy enemy)
+                        throws InterruptedException{
 		System.out.println("\t\t------------------------");
 		System.out.println("\t\t1. Attack\t2.Skills");
 		System.out.println("\t\t3. HP Pot\t4.MP Pot");
 		System.out.println("\t\t------------------------");
+        Scanner sc = new Scanner(System.in);
+        int input = sc.nextInt();
+        switch(input) {         // TODO: Process input for other actions
+            case 1: Thread.sleep(500); playerAttack(player, enemy); break;
+            default: Thread.sleep(500); playerAttack(player, enemy); break;
+        }
+        Thread.sleep(1500);
+        enemyAttack(player, enemy);
+            
 	}
 
 	
