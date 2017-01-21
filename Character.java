@@ -1,7 +1,7 @@
-class Character{
-    private String name;
-    private int hp, mp;
-    private int atk, def;
+class Character extends GameObject{
+    protected String name;
+    protected int hp, mp;
+    protected int atk, def;
 
     public Character() {
         setName("character");
@@ -18,9 +18,6 @@ class Character{
         setDef(def);
     }
 
-    public void setName(String name) {
-        this.name = new String(name);
-    }
     public void setHp(int hp) {
         this.hp = hp;
     }

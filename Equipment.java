@@ -1,10 +1,21 @@
-class Equipment{
-    private String quality;
+class Equipment extends GameObject{
+    protected String quality;
     /* Possible qualities:
      * "poor", "common", "uncommon",
      * "rare", "epic", "legendary"*/
-    private int atk;
-    private int def;
+    protected int atk;
+    protected int def;
+
+    public Equipment() {
+        setQuality("poor");
+        setAtk(3);
+        setDef(1);
+    }
+    public Equipment(String quality, int atk, int def) {
+        setQuality(quality);
+        setAtk(atk);
+        setDef(def);
+    }
 
     public void setQuality(String quality) {
         this.quality = quality;

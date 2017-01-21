@@ -4,4 +4,9 @@ class Weapon extends Equipment{
      * "sword", "gun",
      * "staff", "dagger" */
     private int durability;
+
+    public String toString(){
+        return this.quality + " " + this.type + " with " + this.atk + "ATK and "
+                + this.def + "DEF";
+    }
 }
