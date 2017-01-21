@@ -9,6 +9,14 @@ class Player extends Character{
      * "rogue", "gunslinger"*/
     // TODO: private ArrayList<Skills> skills;
 
+    public Player(String name, int hp, int mp, int atk, int def, String playerClass) {
+        setName(name);
+        setHp(hp);
+        setMp(mp);
+        setAtk(atk);
+        setDef(def);
+        setPlayerClass(playerClass);
+    }
     public void setPlayerClass(String playerClass) {
         this.playerClass = new String(playerClass);
     }
@@ -18,5 +26,9 @@ class Player extends Character{
                 wep.getDurability());
         this.setAtk(wep.getAtk());
         this.setDef(wep.getDef());
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 } 

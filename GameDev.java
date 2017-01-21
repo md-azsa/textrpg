@@ -2,57 +2,23 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class GameDev{
-    public static void fight(Player player, Enemy enemy) {  // TODO: Consider def 
+    public static void fight(Player player, Enemy enemy)
+    throws InterruptedException{  // TODO: Consider def 
         player.setHp(player.getHp()-enemy.getAtk());
         enemy.setHp(enemy.getHp()-player.getAtk());
-        System.out.printf("You take %d damage\n", enemy.getAtk());
         System.out.printf("Enemy takes %d damage\n", player.getAtk());
+        Thread.sleep(500);
+        System.out.printf("You take %d damage\n", enemy.getAtk());
     }
 
-/*    public static Equipment generateEquipment(){    // TODO: Randomize atk and def 
-        Random rand = new Random();
-        int randQuality = rand.nextInt(10) + 1;
-        if(randQuality<=3)
-            return new Weapon("poor", 30, 10, 100);
-        else if(randQuality<=5)
-            return new Weapon("uncommon", 50, 15, 100);
-        else if(randQuality<=7)
-            return new Weapon("rare", 65, 20, 100);
-        else if(randQuality<=9)
-            return new Weapon("epic", 75, 25, 100);
-        else
-            return new Weapon("legendary", 100, 35, 100);
-    }
-*/
 	public static void main(String[] args) throws InterruptedException{
-		//Creates array of weapons, scanner class
-		Weapon[] weapons = new Weapon[4];
-		for(int i = 0; i < 4; i++){
-			weapons[i] = new Weapon();
-		}
 
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t\t\t WELCOME TO GAME");
 		System.out.println("\t\t\t What should I call you, adventurer?");
 		System.out.print("Input:");
 		String characterName = sc.nextLine();
-		
-		//Sword class
-		weapons[0].setType("sword");
-		weapons[0].setAtk(65);
-		weapons[0].setDurability(100);
-		//Mage class
-		weapons[1].setType("staff");
-		weapons[1].setAtk(40);
-		weapons[1].setDurability(100);
-		//Rogue class
-		weapons[2].setType("dagger");
-		weapons[2].setAtk(50);
-		weapons[2].setDurability(100);
-		//Gunslinger class
-		weapons[3].setType("gun");
-		weapons[3].setAtk(50);
-		weapons[3].setDurability(100);
+
 		pDel("\t\tNice to meet you ", TimeUnit.MILLISECONDS);
 		pDel(characterName, TimeUnit.MILLISECONDS);
 		pDel("!\n", TimeUnit.MILLISECONDS);
@@ -73,6 +39,14 @@ public class GameDev{
 			System.out.print("Input:");
 			choiceOfClass = sc.nextInt();
 		}while(choiceOfClass > 4 || choiceOfClass < 1);
+        // Create player TODO: set class based on user choice
+        Player player = new Player(characterName, 300, 50, 50, 20, "warrior");
+        player.setWeapon(new Weapon());
+        player.getWeapon().setType("sword");    // TODO: Set type based on class
+
+        // TODO: Fix formatting
+        pDel("You received a " + player.getWeapon().toString(), TimeUnit.MILLISECONDS);
+
 		//Story of class
 		Thread.sleep(1020);
 
@@ -161,6 +135,7 @@ public class GameDev{
 			pDel("\t\tThe ground starts shaking immensely\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tA large monster materialized from the muddy plains\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tLucifer: Stay on your toes, fool! This is gonna be your first battle!\n", TimeUnit.MILLISECONDS);
+            Enemy slime = new Enemy("Slime", 200, 10, 20, 0, "monster");
 			//Psuedo load
 			System.out.print("\t\t|");
 				psuedoLoading = 1;
@@ -170,6 +145,11 @@ public class GameDev{
 					psuedoLoading += 1;
 				}
 			System.out.println("|\n");
+
+            while(slime.getHp() > 0) {
+                fight(player, slime);
+                Thread.sleep(1000);
+            }
 
 		}
 
