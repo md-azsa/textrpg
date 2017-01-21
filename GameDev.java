@@ -9,6 +9,21 @@ public class GameDev{
         System.out.printf("%s takes %d damage\n", player.getAtk());
     }
 
+    public static Equipment generateEquipment(){
+        Random rand = new Random();
+        int randQuality = rand.nextInt(10) + 1;
+        if(randQuality<=3)
+            return new Weapon("poor", 30, 10, 100);
+        else if(randQuality<=5)
+            return new Weapon("uncommon", 50, 15, 100);
+        else if(randQuality<=7)
+            return new Weapon("rare", 65, 20, 100);
+        else if(randQuality<=9)
+            return new Weapon("epic", 75, 25, 100);
+        else
+            return new Weapon("legendary", 100, 35, 100);
+    }
+
 	public static void main(String[] args) throws InterruptedException{
 		//Creates array of weapons, scanner class
 		Weapon[] weapons = new Weapon[4];
