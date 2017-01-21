@@ -1,7 +1,7 @@
 class Character{
-    private String name;
-    private int hp, mp;
-    private int atk, def;
+    protected String name;
+    protected int hp, mp;
+    protected int atk, def;
 
     public Character() {
         setName("character");
