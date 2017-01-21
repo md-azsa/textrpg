@@ -1,4 +1,4 @@
-class Character{
+class Character extends GameObject{
     protected String name;
     protected int hp, mp;
     protected int atk, def;
