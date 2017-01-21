@@ -17,6 +17,14 @@ class Player extends Character{
         setDef(def);
         setPlayerClass(playerClass);
     }
+    public Player() {
+        setName("Player");
+        setHp(300);
+        setMp(50);
+        setAtk(0);
+        setDef(0);
+        setPlayerClass("warrior");
+    }
     public void setPlayerClass(String playerClass) {
         this.playerClass = new String(playerClass);
     }
