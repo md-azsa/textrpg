@@ -48,3 +48,9 @@ Temporary Items
 GameDev$Weapon.class
 GameObject.class
 GameDev.class
+Character.class
+Enemy.class
+Equipment.class
+Player.class
+Weapon.class
+AnimationFrame.class
