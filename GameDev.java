@@ -66,7 +66,7 @@ public class GameDev{
 		else if(choiceOfClass == 2){
 			pDel("\t\tHmmm.... Interesting choice of class\n", TimeUnit.MILLISECONDS);
 			Thread.sleep(700);
-			pDel("\t\tSeek knowledge through adventure, young Mage...", TimeUnit.MILLISECONDS);
+			pDel("\t\tSeek knowledge through adventure, young Mage...\n", TimeUnit.MILLISECONDS);
 		}
 		else if(choiceOfClass == 3){
 			pDel("\t\tWhat you lack in power...\n", TimeUnit.MILLISECONDS);
@@ -81,7 +81,7 @@ public class GameDev{
 		}
 		pDel("\t\tGet ready, adventurer!", TimeUnit.MILLISECONDS);
 		Thread.sleep(1000);
-		System.out.println("\n\t\t\t\tTeleporting to realm of Obsidian");
+		System.out.println("\n\n\t\t\t\tTeleporting to realm of Obsidian");
 		Thread.sleep(600);
 		System.out.print("\t\t|");
 		int psuedoLoading = 1;
@@ -90,7 +90,24 @@ public class GameDev{
 			System.out.print("#");
 			psuedoLoading++;
 		}
-		System.out.println("|\n\n");
+		System.out.println("|\n");
+
+		//<--------- ADVENTURE BEGINS HERE -------------->
+		//Seperate paths 4 choices
+		pDel("\t\t*THUMP*\n", TimeUnit.MILLISECONDS);
+		Thread.sleep(700);
+		pDel("\t\t....\n", TimeUnit.MILLISECONDS);
+		Thread.sleep(500);
+		pDel("\t\tUrgh... Where am I?\n", TimeUnit.MILLISECONDS);
+		Thread.sleep(400);
+		pDel("\t\tThere are 4 paths to take...\n", TimeUnit.MILLISECONDS);
+		//Choice to take
+		pDel("\t\t1. A straight path that heads NORTH\n", TimeUnit.MILLISECONDS);
+		pDel("\t\t2. A path bathed with smog that heads EAST\n", TimeUnit.MILLISECONDS);
+		pDel("\t\t3. A path heading SOUTH that leads to a gate\n", TimeUnit.MILLISECONDS);
+		pDel("\t\t4. A path that heads WEST and a figure behind it\n", TimeUnit.MILLISECONDS);
+
+
 
 	}
 
@@ -102,6 +119,8 @@ public class GameDev{
 			unit.sleep(20);
 		}
 	}
+
+
 	
 	
 }
