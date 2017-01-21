@@ -34,7 +34,7 @@ public class GameDev{
 		Scanner sc = new Scanner(System.in);
 		System.out.println("\t\t\t\t WELCOME TO GAME");
 		System.out.println("\t\t\t What should I call you, adventurer?");
-		System.out.print("Input:");
+		System.out.print("Input: ");
 		String characterName = sc.nextLine();
 		
 		//Sword class
@@ -101,14 +101,8 @@ public class GameDev{
 		Thread.sleep(1000);
 		System.out.println("\n\n\t\t\t\tTeleporting to realm of Obsidian");
 		Thread.sleep(600);
-		System.out.print("\t\t|");
-		int psuedoLoading = 1;
-		for(int i = 0; i < 55; i++){
-			Thread.sleep(100 - psuedoLoading);
-			System.out.print("#");
-			psuedoLoading += 1;
-		}
-		System.out.println("|\n");
+		//Enter pseudoload
+		psuedoLoad(2);
 
 		//<--------- ADVENTURE BEGINS HERE -------------->
 		//Seperate paths 4 choices
@@ -127,7 +121,7 @@ public class GameDev{
 
 		int choiceOfPath1 = 0;	
 		do{
-			System.out.print("Input:");
+			System.out.print("Input: ");
 			choiceOfPath1 = sc.nextInt();
 		}while(choiceOfPath1 < 1 || choiceOfPath1 > 4);
 
@@ -140,7 +134,7 @@ public class GameDev{
 			pDel("\t\t2. Leave it alone\n", TimeUnit.MILLISECONDS);
 			int choiceToTakeShinyObject = 0;
 			do{
-				System.out.print("Input:");
+				System.out.print("Input: ");
 				choiceToTakeShinyObject = sc.nextInt();
 			}while(choiceToTakeShinyObject < 1 || choiceToTakeShinyObject > 2);
 
@@ -162,14 +156,7 @@ public class GameDev{
 			pDel("\t\tA large monster materialized from the muddy plains\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tLucifer: Stay on your toes, fool! This is gonna be your first battle!\n", TimeUnit.MILLISECONDS);
 			//Psuedo load
-			System.out.print("\t\t|");
-				psuedoLoading = 1;
-				for(int i = 0; i < 55; i++){
-					Thread.sleep(100 - psuedoLoading);
-					System.out.print("#");
-					psuedoLoading += 1;
-				}
-			System.out.println("|\n");
+			psuedoLoad(3);
 
 		}
 
@@ -177,15 +164,39 @@ public class GameDev{
 	}
 
 	//Print Delay - pDel
-	//Fixed to 20ms
+	//Fixed to 15ms
 	public static void pDel(String data, TimeUnit unit)throws InterruptedException{
 		for(char ch:data.toCharArray()){
 			System.out.print(ch);
-			unit.sleep(20);
+			unit.sleep(15);
 		}
 	}
 
+	//Displays fake loading screen
+	public static void psuedoLoad(int k)throws InterruptedException{
+		int psuedoLoading = 1;
+		int timeToDecrease = 100;
 
-	
+		System.out.print("\t\t|");
+		for(int i = 0; i < 55; i++){
+			if(timeToDecrease - psuedoLoading < 0){
+				timeToDecrease = 0;
+				psuedoLoading = 0;
+			}
+			Thread.sleep(timeToDecrease - psuedoLoading);
+			System.out.print("#");
+			psuedoLoading += k;
+		}
+		System.out.println("|\n");
+	}
+
+	//Displays combat menu
+	public static void combatMenu(){
+		System.out.println("\t\t------------------------");
+		System.out.println("\t\t1. Attack\t2.Skills");
+		System.out.println("\t\t3. HP Pot\t4.MP Pot");
+		System.out.println("\t\t------------------------");
+	}
+
 	
 }
