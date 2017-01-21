@@ -163,6 +163,10 @@ public class GameDev{
 
 	}
 
+
+
+	//<--------------------------- METHODS ---------------------------->
+
 	//Print Delay - pDel
 	//Fixed to 15ms
 	public static void pDel(String data, TimeUnit unit)throws InterruptedException{
