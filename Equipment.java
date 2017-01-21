@@ -1,10 +1,10 @@
 class Equipment{
-    private String quality;
+    protected String quality;
     /* Possible qualities:
      * "poor", "common", "uncommon",
      * "rare", "epic", "legendary"*/
-    private int atk;
-    private int def;
+    protected int atk;
+    protected int def;
 
     public void setQuality(String quality) {
         this.quality = quality;
