@@ -17,9 +17,13 @@ class Character extends GameObject{
         setAtk(atk);
         setDef(def);
     }
-    public void attack(Character enemy){  // TODO: Consider def 
-        if(nextRand() > enemy.getDodge())
+    public int attack(Character enemy){  // TODO: Consider def 
+        if(nextRand() > enemy.getDodge()) {
             enemy.setHp(enemy.getHp()-this.getAtk());
+            return this.getAtk();
+        }
+        else
+            return 0;
     }
 
     public void setDodge(int dodge) {

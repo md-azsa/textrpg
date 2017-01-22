@@ -184,7 +184,7 @@ public class GameDev{
 		System.out.println("|\n");
 	}
 
-	//Displays combat menu
+	//Displays combat menu and combat logs
 	public static void combatMenu(Player player, Enemy enemy)
                         throws InterruptedException{
 		System.out.println("\t\t------------------------");
@@ -193,12 +193,28 @@ public class GameDev{
 		System.out.println("\t\t------------------------");
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
+        int damage;
         switch(input) {         // TODO: Process input for other actions
-            case 1: Thread.sleep(500); player.attack(enemy); break;
-            default: Thread.sleep(500); player.attack(enemy); break;
+            case 1: Thread.sleep(500); 
+                    if((damage=player.attack(enemy)) != 0)
+                        pDel("You dealt " + damage + " to " + enemy.getName() + "\n",
+                            TimeUnit.MILLISECONDS);
+                    else
+                        pDel("You dodged " + enemy.getName() + "'s attack" + "\n",
+                            TimeUnit.MILLISECONDS);
+                    break;
+            default: Thread.sleep(500);
+                    if((damage=player.attack(enemy)) != 0)
+                        pDel("You dealt " + damage + " to " + enemy.getName() + "\n",
+                            TimeUnit.MILLISECONDS);
+                    else
+                        pDel(enemy.getName() + " dodged your attack\n",
+                            TimeUnit.MILLISECONDS);
+                    break;
         }
         Thread.sleep(1500);
-        enemy.attack(player);
+        if((damage=enemy.attack(player)) != 0)
+            pDel(enemy.getName() + "dealt " + damage + " to you\n", TimeUnit.MILLISECONDS);
             
 	}
 
