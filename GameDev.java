@@ -2,21 +2,6 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class GameDev{
-	
-	//<--------------------- ATTACKING METHODS ------------------------->
-	//When you're attacking the enemy
-    public static void playerAttack(Player player, Enemy enemy){  // TODO: Consider def 
-        player.setHp(player.getHp()-enemy.getAtk());
-        System.out.printf("\t\tEnemy takes %d damage\n", player.getAtk());
-        
-    }
-
-    //When enemy is attacking you
-    public static void enemyAttack(Player player, Enemy enemy){
-    	enemy.setHp(enemy.getHp()-player.getAtk());
-    	System.out.printf("\t\tYou take %d damage\n", enemy.getAtk());
-    }
-    //<--------------------- END ATTACKING METHODS -------------------->
 
     //<------------------------- MAIN CLASS --------------------------->
 	public static void main(String[] args) throws InterruptedException{
@@ -209,11 +194,11 @@ public class GameDev{
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
         switch(input) {         // TODO: Process input for other actions
-            case 1: Thread.sleep(500); playerAttack(player, enemy); break;
-            default: Thread.sleep(500); playerAttack(player, enemy); break;
+            case 1: Thread.sleep(500); player.attack(enemy); break;
+            default: Thread.sleep(500); player.attack(enemy); break;
         }
         Thread.sleep(1500);
-        enemyAttack(player, enemy);
+        enemy.attack(player);
             
 	}
 

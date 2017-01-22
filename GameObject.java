@@ -1,3 +1,5 @@
+import java.util.*;
+
 class GameObject{
 
     protected int index;
@@ -9,6 +11,10 @@ class GameObject{
         index = -1;
     }
 
+    public int nextRand(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt(max) + min;
+    }
 
     public int getIndex()
     {

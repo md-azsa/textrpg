@@ -6,33 +6,37 @@ class Weapon extends Equipment{
      * "sword", "gun",
      * "staff", "dagger" */
     private int durability;
+
     public Weapon(String quality, int atk, int def, int durability) {
         setQuality(quality);
         setAtk(atk);
         setDef(def);
         setDurability(durability);
     }
+
+    // Generate a random weapon
+    // Weapon type not set
     public Weapon() {
-        setQuality("poor");
-        setAtk(0);
-        setDef(0);
-        setDurability(100);
-        Random rand = new Random();
-        int randQuality = rand.nextInt(10) + 1;
+        int randQuality = nextRand(1, 10);
         if(randQuality<=3) {
-            setQuality("poor"); setAtk(30); setDef(10); setDurability(100);
+            setQuality("poor"); setAtk(nextRand(20, 30)); setDef(nextRand(0, 5));
+            setDurability(100);
         }
         else if(randQuality<=5) {
-            setQuality("uncommon"); setAtk(50); setDef(15); setDurability(100);
+            setQuality("uncommon"); setAtk(nextRand(30, 40)); setDef(nextRand(5, 10));
+            setDurability(100);
         }
         else if(randQuality<=7) {
-            setQuality("rare"); setAtk(65); setDef(20); setDurability(100);
+            setQuality("rare"); setAtk(nextRand(40, 50)); setDef(nextRand(10, 15));
+            setDurability(100);
         }
         else if(randQuality<=9) {
-            setQuality("epic"); setAtk(75); setDef(25); setDurability(100);
+            setQuality("epic"); setAtk(nextRand(50, 60)); setDef(nextRand(15, 20));
+            setDurability(100);
         }
         else {
-            setQuality("legendary"); setAtk(100); setDef(35); setDurability(100);
+            setQuality("legendary"); setAtk(nextRand(70, 80)); setDef(nextRand(25, 30));
+            setDurability(100);
         }
     }
 

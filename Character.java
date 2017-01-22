@@ -17,6 +17,9 @@ class Character extends GameObject{
         setAtk(atk);
         setDef(def);
     }
+    public void attack(Character enemy){  // TODO: Consider def 
+        enemy.setHp(enemy.getHp()-this.getAtk());
+    }
 
     public void setHp(int hp) {
         this.hp = hp;
