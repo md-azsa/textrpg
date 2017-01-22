@@ -1,7 +1,7 @@
 class Character extends GameObject{
-    protected String name;
     protected int hp, mp;
     protected int atk, def;
+    protected int dodge = 5;
 
     public Character() {
         setName("character");
@@ -18,9 +18,13 @@ class Character extends GameObject{
         setDef(def);
     }
     public void attack(Character enemy){  // TODO: Consider def 
-        enemy.setHp(enemy.getHp()-this.getAtk());
+        if(nextRand() > enemy.getDodge())
+            enemy.setHp(enemy.getHp()-this.getAtk());
     }
 
+    public void setDodge(int dodge) {
+        this.dodge = dodge;
+    }
     public void setHp(int hp) {
         this.hp = hp;
     }
@@ -32,6 +36,9 @@ class Character extends GameObject{
     }
     public void setDef(int def) {
         this.def = def;
+    }
+    public int getDodge() {
+        return this.dodge;
     }
     public int getHp() {
         return this.hp;

@@ -11,9 +11,13 @@ class GameObject{
         index = -1;
     }
 
-    public int nextRand(int min, int max) {
+    public static int nextRand(int min, int max) {
         Random rand = new Random();
         return rand.nextInt(max) + min;
+    }
+    public static int nextRand() {
+        Random rand = new Random();
+        return rand.nextInt(100) + 1;
     }
 
     public int getIndex()
