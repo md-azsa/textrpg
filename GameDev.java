@@ -197,7 +197,7 @@ public class GameDev{
         switch(input) {         // TODO: Process input for other actions
             case 1: Thread.sleep(500); 
                     if((damage=player.attack(enemy)) != 0)
-                        pDel("You dealt " + damage + " to " + enemy.getName() + "\n",
+                        pDel("You dealt " + damage + " damage to " + enemy.getName() + "\n",
                             TimeUnit.MILLISECONDS);
                     else
                         pDel("You dodged " + enemy.getName() + "'s attack" + "\n",
@@ -205,7 +205,7 @@ public class GameDev{
                     break;
             default: Thread.sleep(500);
                     if((damage=player.attack(enemy)) != 0)
-                        pDel("You dealt " + damage + " to " + enemy.getName() + "\n",
+                        pDel("You dealt " + damage + " damage to " + enemy.getName() + "\n",
                             TimeUnit.MILLISECONDS);
                     else
                         pDel(enemy.getName() + " dodged your attack\n",
@@ -214,9 +214,7 @@ public class GameDev{
         }
         Thread.sleep(1500);
         if((damage=enemy.attack(player)) != 0)
-            pDel(enemy.getName() + "dealt " + damage + " to you\n", TimeUnit.MILLISECONDS);
-            
+            pDel(enemy.getName() + " dealt " + damage + " damage to you\n", 
+                    TimeUnit.MILLISECONDS);
 	}
-
-	
 }
