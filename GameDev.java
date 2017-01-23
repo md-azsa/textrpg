@@ -134,7 +134,8 @@ public class GameDev{
 		if(choiceOfPath1 == 4){
 			pDel("\t\tThe ground starts shaking immensely\n", TimeUnit.MILLISECONDS);
 			pDel("\t\tA large monster materialized from the muddy plains\n", TimeUnit.MILLISECONDS);
-			pDel("\t\tLucifer: Stay on your toes, fool! This is gonna be your first battle!\n", TimeUnit.MILLISECONDS);
+			pDel("\t\tLucifer: Stay on your toes, fool! This is gonna be your first battle!\n\n", TimeUnit.MILLISECONDS);
+			pDel("\t\t\t\t\tMONSTER ENCOUNTER\n", TimeUnit.MILLISECONDS); //Note MONSTER enocunter is different from BOSS encounter
 
 			//Enemy creation
             Enemy slime = new Enemy("Slime", 200, 10, 20, 0, "monster");
@@ -185,36 +186,49 @@ public class GameDev{
 	}
 
 	//Displays combat menu and combat logs
-	public static void combatMenu(Player player, Enemy enemy)
-                        throws InterruptedException{
+	public static void combatMenu(Player player, Enemy enemy) throws InterruptedException{
+
+		System.out.println("\t\tWhat should you do?");
 		System.out.println("\t\t------------------------");
 		System.out.println("\t\t1. Attack\t2.Skills");
 		System.out.println("\t\t3. HP Pot\t4.MP Pot");
 		System.out.println("\t\t------------------------");
         Scanner sc = new Scanner(System.in);
+
+
+        System.out.print("Input: ");
         int input = sc.nextInt();
         int damage;
         switch(input) {         // TODO: Process input for other actions
             case 1: Thread.sleep(500); 
-                    if((damage=player.attack(enemy)) != 0)
-                        pDel("You dealt " + damage + " damage to " + enemy.getName() + "\n",
+            	if((damage=player.attack(enemy)) != 0)
+                    pDel("\t\tYou dealt " + damage + " damage to " + enemy.getName() + "\n",
                             TimeUnit.MILLISECONDS);
                     else
-                        pDel("You dodged " + enemy.getName() + "'s attack" + "\n",
+                        pDel("\t\tYou dodged " + enemy.getName() + "'s attack" + "\n",
                             TimeUnit.MILLISECONDS);
                     break;
+
+            //protoype
+            case 2: Thread.sleep(500);
+            		System.out.println("\t\t--------------------------");
+					System.out.println("\t\t1.Skill 1\t2.Skill 2");
+					System.out.println("\t\t3.Skill 3\t4.Skill 4");
+					System.out.println("\t\t--------------------------");
+
+
             default: Thread.sleep(500);
                     if((damage=player.attack(enemy)) != 0)
-                        pDel("You dealt " + damage + " damage to " + enemy.getName() + "\n",
+                        pDel("\t\tYou dealt " + damage + " damage to " + enemy.getName() + "\n",
                             TimeUnit.MILLISECONDS);
                     else
-                        pDel(enemy.getName() + " dodged your attack\n",
+                        pDel("\t\t" + enemy.getName() + " dodged your attack\n",
                             TimeUnit.MILLISECONDS);
                     break;
         }
         Thread.sleep(1500);
         if((damage=enemy.attack(player)) != 0)
-            pDel(enemy.getName() + " dealt " + damage + " damage to you\n", 
+            pDel("\t\t" + enemy.getName() + " dealt " + damage + " damage to you\n", 
                     TimeUnit.MILLISECONDS);
 	}
 }
