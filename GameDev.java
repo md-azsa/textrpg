@@ -200,8 +200,9 @@ public class GameDev{
                         pDel("You dealt " + damage + " damage to " + enemy.getName() + "\n",
                             TimeUnit.MILLISECONDS);
                     else
-                        pDel("You dodged " + enemy.getName() + "'s attack" + "\n",
+                        pDel(enemy.getName() + " dodged your attack\n",
                             TimeUnit.MILLISECONDS);
+
                     break;
             default: Thread.sleep(500);
                     if((damage=player.attack(enemy)) != 0)
@@ -215,6 +216,9 @@ public class GameDev{
         Thread.sleep(1500);
         if((damage=enemy.attack(player)) != 0)
             pDel(enemy.getName() + " dealt " + damage + " damage to you\n", 
+                    TimeUnit.MILLISECONDS);
+        else
+            pDel(enemy.getName() + " dodged your attack\n",
                     TimeUnit.MILLISECONDS);
 	}
 }

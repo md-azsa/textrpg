@@ -1,7 +1,7 @@
 class Character extends GameObject{
     protected int hp, mp;
     protected int atk, def;
-    protected int dodge = 5;
+    protected int dodge = 10;
 
     public Character() {
         setName("character");
